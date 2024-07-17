@@ -9,7 +9,7 @@ describe('AppComponent', () => {
         RouterModule.forRoot([])
       ],
       declarations: [
-        AppComponent
+        AppComponent 
       ],
     }).compileComponents();
   });

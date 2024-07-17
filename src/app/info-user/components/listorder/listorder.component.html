@@ -1,0 +1,77 @@
+	<!-- info  -->
+    <div class="col-12 shadow-lg  row  pb-3" >
+		<div>
+		<div class="my-3  ">
+		<span style="font-size: x-large;font-style: inherit;" >Đơn hàng của tôi</span>
+		</div>
+		<!-- tìm đơn hàng -->
+		<div>
+		<form class="d-flex" action="/orderCostumer/search" method="post" role="search">
+        <input class="form-control me-2" type="number" name="idOrder" placeholder="Tìm theo mã đơn" aria-label="Search">
+        <button class="btn btn-outline-success" type="submit">Search</button>
+      </form>
+		</div>
+			<!-- tìm đơn hàng -->
+		
+		
+	
+			<form action="/orderCostumer/chi-tiet-don" method="post">
+			<!-- đơn hàng -->
+			<input type="hidden" name="idOrder" value="order.idOrder">
+		<div class=" my-4 border shadow-sm " >
+		<!-- trạng thái đơn  -->
+		<div class="p-3 border-bottom " >Trạng thái đơn hàng : order.status <span class="ms-5"> Mã đơn hàng :order.idOrder</span> </div>
+		<!-- sơ lượt sản phẩm -->
+		
+			
+				<div class="   py-3  border-bottom d-flex flex-nonwrap">
+			<!-- hình sản phẩm -->
+			<div class="col-2 me-5">
+			<img alt=""  style="height: 80px ; width: 150px">
+			</div>
+			<!-- thong tin sản phẩm -->
+			<div class=" col-8 d-flex justify-content-between " style="font-weight: bolder;">
+			<span>orderDetail.productDetail.product.name</span>
+		
+			</div>
+		</div>
+		
+	
+		
+		
+		<!-- Tông tien -->
+		<div class="  d-flex justify-content-around " >
+			<span></span>
+			<span>Tổng Tiền  :  </span>
+			
+			</div>
+		
+		
+		
+		
+		<!-- btn xem dơn -->
+		
+		<div class=" py-3 d-flex justify-content-around " >
+			<span></span>
+			
+			<button type="submit" class="btn btn-outline-primary" role="button">Xem chi tiết</button>
+			
+			</div>
+		</div>
+		</form>
+		
+		<!-- đơn hàng  end -->
+		
+		
+	
+		
+
+		
+		
+		
+		
+		</div>
+		
+		</div>
+		<!-- info  -->
+		

@@ -1,0 +1,116 @@
+<div class="container m-3">
+    <h3>Danh Sách đơn hàng</h3>
+    <!-- form tim kiem -->
+
+
+    <div class="row g-3">
+        <form action="/admin/list-orders">
+            <div class="row g-3 ">
+                <div class="col-8">
+                    <input type="number" min="1" class="form-control"
+                        placeholder="Tìm mã đơn hàng" name="keyword" aria-label="First name">
+                </div>
+
+                <div class="col-3 ">
+                    <button type="submit" class="btn btn-secondary ">Tìm
+                        kiếm</button>
+                    <button type="button" class="btn btn-outline-primary  ">Làm
+                        Mới</button>
+                </div>
+            </div>
+        </form>
+
+        <div class="col-12"></div>
+        <!-- table -->
+        <div class="col-11 mx-auto"
+            style="overflow-y: scroll; height: 500px;">
+
+            <table class="table table-light shadow border table-hover "
+                style="height: 500px">
+                <thead>
+                    <tr>
+
+                        <th scope="col">Mã Đơn Hàng</th>
+                        <th scope="col">Ngày Đặt (yyyy-MM-dd)</th>
+                        <th scope="col">Tên Khách Hàng</th>
+                        <th scope="col">Tổng tiền</th>
+                        <th scope="col">Trạng Thái</th>
+                        <th scope="col">Thao Tác</th>
+                    </tr>
+                </thead>
+                <tbody>
+
+
+                   
+                        <tr>
+                            <td>order.idOrder</td>
+                            <td>x</td>
+                            <td>order.name</td>
+                            <td>xx VND</td>
+                            <td>order.status</td>
+                            <td>
+                                <form action="/admin/orders">
+                                    <input type="hidden" value="order.idOrder"
+                                        name="idOrder">
+                                    <button type="submit" class="btn btn-outline-primary">Cập
+                                        Nhật</button>
+                                </form>
+                            </td>
+                        </tr>
+                   
+
+
+
+
+
+
+
+
+
+
+                </tbody>
+            </table>
+
+
+        </div>
+
+        <!-- paging -->
+        <div class="d-flex justify-content-center">
+
+            <nav aria-label="Page navigation example mx-auto">
+
+
+
+
+                <ul class="pagination justify-content-center mb-3">
+
+                    <li class="page-item"><a class="page-link"
+                        href="/admin/list-orders?p=0">First</a></li>
+
+                    
+
+                    <li class="page-item"><a class="page-link"
+                       >Last</a></li>
+
+                </ul>
+
+
+            </nav>
+
+
+
+
+        </div>
+
+
+    </div>
+
+
+
+
+
+
+
+</div>
+
+

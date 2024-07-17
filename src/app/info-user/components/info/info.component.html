@@ -1,0 +1,137 @@
+<div class="col-12 shadow-lg  row " style="height: 500px">
+ <!-- form info -->
+   <div class="col-7  h-100 border-end">
+    
+    
+    <div class="my-3  ">
+    <span style="font-size: x-large;font-style: inherit;" >Thông tin cá nhân</span>
+    </div>
+    <form action="/infoCostumer/update" method="post">
+    <input type="hidden" value="userCurrent.email"  name="email" class="form-control" id="exampleInputEmail1" >
+<div class="mb-3">
+Họ và tên :
+<input type="text" value="userCurrent.name"  name="name" class="form-control" id="exampleInputEmail1" >
+
+</div>
+<div class="mb-3">
+Ngày sinh :
+  
+<input type="date" value="birthdayUserCurrent" required="required"	 name="birhdayYet" class="form-control" id="exampleInputEmail1" >
+
+</div>
+<div class="mb-3">
+Giới Tính :
+<div class="ms-3 form-check form-check-inline">
+<input class="form-check-input"  required="required"  type="radio" name="gender" id="inlineRadio1" value="true">
+<label class="form-check-label" for="inlineRadio1">Nam</label>
+</div>
+<div class="form-check form-check-inline">
+<input class="form-check-input" required="required"  type="radio" name="gender" id="inlineRadio2" value="false">
+<label class="form-check-label" for="inlineRadio2">Nu</label>
+</div>
+
+</div>
+
+ <div class="mb-3">
+
+Số điện thoại :
+<input type="text" value="userCurrent.phone"  name="phone" class="form-control" id="exampleInputEmail1" >
+
+</div>
+
+<div class="mb-3">
+
+Địa chỉ :
+<input type="text" value="userCurrent.location"  name="location" class="form-control" id="exampleInputEmail1" >
+
+</div>
+
+<button type="submit" class="  btn btn-primary">Lưu thay đổi</button>
+</form>
+    
+    
+    </div>
+    
+    <!-- changes pass and email  -->
+    <div class="col-5 row ">
+    
+        <!-- sdt va email -->
+    <div >
+      <div  class="mt-3">
+    
+    <span style="font-size: large;font-style: inherit;" >Số điện thoại và email</span>
+    </div>
+            <!-- sdt -->
+                <div class="row mt-2 py-3 border-bottom">
+
+                    <!-- info -->
+                    <div class="col-10 row">
+                        <i class="fa-solid fa-phone col-2"></i>
+                        <div class="col-10">
+                            <span> Số điện thoại  <br> userCurrent.phone
+                            </span>
+                        </div>
+                    </div>
+                    <!-- button -->
+                    <div  class="col-2">
+                    
+                    </div>
+
+                </div>
+
+                <!-- email -->
+
+                <div class="row mt-2 py-3 ">
+
+                    <!-- info -->
+                    <div class="col-10 row">
+                        <i class="fa-solid fa-envelope col-2"></i>
+                        <div class="col-10">
+                            <span> Email  <br> userCurrent.email
+                            </span>
+                        </div>
+                    </div>
+                    <!-- button -->
+                    <div  class="col-2">
+                    
+                    </div>
+
+                </div>
+
+            </div>
+
+
+<!-- Bao mat -->
+    <div >
+      <div  class="">
+    
+    <span style="font-size: large;font-style: inherit;" >Bảo mật</span>
+    </div>
+            <!-- sdt -->
+                <div class="row mt-2 py-3 ">
+
+                    <!-- info -->
+                    <div class="col-10 row">
+                        <i class="fa-solid fa-lock col-2"></i>
+                        <div class="col-10">
+                            <span> Đổi mật khẩu  
+                            </span>
+                        </div>
+                    </div>
+                    <!-- button -->
+                    <div  class="col-2">
+                    <form >
+                    <button type="submit" formaction="/infoCostumer/password" formmethod="get" class="btn btn-outline-primary">Changes</button>
+                    </form>
+                    </div>
+
+                </div>
+
+            
+
+            </div>
+
+    
+    
+    
+    </div>  </div>

@@ -1,0 +1,176 @@
+<h3 class="ms-5">Thanh Toán</h3>
+
+	<div class="container-fluid w-75 ">
+		<!-- Dia chi giao -->
+
+
+
+				<div class="card border-secondary w-100">
+					<div class="card-header   border">
+						<h4 class="font-weight-semi-bold m-0">Giao tới</h4>
+					</div>
+					
+					
+					<div class="card-body">
+					
+		
+						
+						<div class="d-flex justify-content-between">
+							<h6 class="font-weight-medium"></h6>
+							<h6 class="font-weight-medium">
+								<a href="#" class="" data-bs-toggle="modal"
+									data-bs-target="#exampleModal">Thay Đổi</a>
+							</h6>
+						</div>
+						
+
+					</div>
+
+
+
+				</div>
+
+
+
+
+			
+
+
+
+
+	</div>
+	<!-- Cart Start -->
+	<div class="container-fluid pt-5">
+
+		<div class="row px-xl-5">
+			<h4>Sản phẩm</h4>
+
+
+
+			<div class="col-lg-8 table-responsive mb-5">
+				<table class="table table-bordered text-center mb-0">
+					<thead class="bg-secondary text-dark">
+						<tr>
+							<th>Products</th>
+							<th>Price</th>
+							<th>Quantity</th>
+							<th>Total</th>
+							<th>Remove</th>
+						</tr>
+					</thead>
+					<tbody class="align-middle">
+
+					
+
+
+
+
+					</tbody>
+				</table>
+			</div>
+
+
+
+
+
+			<div class="col-lg-4">
+
+
+
+
+					<form action="/create-order" method="post">
+				<!-- tong tien -->
+				<div class="card border-secondary mb-5">
+					<div class="card-header  border-0">
+						<h4 class="font-weight-semi-bold m-0">Thanh toán</h4>
+					</div>
+					<div class="card-body">
+						<div class="d-flex justify-content-between mb-3 pt-1">
+							<h6 class="font-weight-medium">Subtotal</h6>
+							<h6 class="font-weight-medium">
+							</h6>
+						</div>
+						<div class="d-flex justify-content-between">
+							<h6 class="font-weight-medium">Shipping</h6>
+							<h6 class="font-weight-medium">0 VND</h6>
+						</div>
+						<hr>
+						<div class="d-flex justify-content-between">
+							<h6 class="font-weight-medium">Phương thức thanh toán</h6>
+							<h6 class="font-weight-medium"></h6>
+						</div>
+
+						<div class="form-check">
+							<input class="form-check-input" type="radio"
+								name="paymentMethods" value="cash" checked id="flexRadioDefault1"> <label
+								class="form-check-label" for="flexRadioDefault1">
+								Thanh toán bằng tiền mặt </label>
+						</div>
+						<div class="form-check">
+							<input class="form-check-input" type="radio" 
+								name="paymentMethods" value="VNpay" id="flexRadioDefault2" >
+							<label class="form-check-label" for="flexRadioDefault2">
+								Thanh toán bằng VNpay  </label>
+						</div>
+
+					</div>
+					<div class="card-footer border-secondary bg-transparent">
+						<div class="d-flex justify-content-between mt-2">
+							<h5 class="font-weight-bold">Total</h5>
+							<h5 class="font-weight-bold">
+						
+							</h5>
+						</div>
+						<div class="d-flex justify-content-between mt-2">
+							<h5 class="font-weight-bold"></h5>
+							<button type="submit" class="btn btn-block btn-primary my-3 py-3">Đặt
+								hàng</button>
+						</div>
+
+					</div>
+				</div>
+				
+				</form>
+
+
+
+
+			</div>
+		</div>
+	</div>
+	<!-- Cart End -->
+
+
+	<!-- Modal đổi địa chỉ giao -->
+	<form action="/checkout/change-adrress" method="post">
+		<div class="modal fade" id="exampleModal" tabindex="-1"
+			aria-labelledby="exampleModalLabel" aria-hidden="true">
+			<div class="modal-dialog">
+				<div class="modal-content">
+					<div class="modal-header">
+						<h1 class="modal-title fs-5" id="exampleModalLabel">Địa chỉ
+							của tôi</h1>
+						<button type="button" class="btn-close" data-bs-dismiss="modal"
+							aria-label="Close"></button>
+					</div>
+					<div class="modal-body ">
+
+
+
+					
+
+
+					</div>
+					<div class="modal-footer">
+						
+						<button type="submit" class="btn btn-primary">Save
+							changes</button>
+						<button type="submit" formaction="/locationCostumer/add-form" formmethod="get" class="btn btn-primary">Thêm mới</button>
+					<button type="button" class="btn btn-secondary"
+							data-bs-dismiss="modal">Close</button>
+					</div>
+				</div>
+			</div>
+		</div>
+	</form>
+

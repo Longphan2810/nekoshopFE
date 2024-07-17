@@ -1,0 +1,100 @@
+<div class="container m-3">
+    <h3>Danh Sách Sản Phẩm</h3>
+    <!-- form tim kiem -->
+    <form action="/admin/list-product">
+
+        <div class="row g-3">
+            <div class="col-10">
+                <input type="text" class="form-control"
+                    name="keywords" value="formkeywordsform"
+                    placeholder="Tìm Tên sản phẩm"
+                    aria-label="First name">
+            </div>
+            
+            <div class="col-2">
+                <button type="submit" class="btn btn-secondary mx-2">Tìm
+                    kiếm</button>
+            
+            </div>
+
+
+            <div class="col-12 d-flex justify-content-between">
+                <h4> Tổng : formpageProduct.totalElementsform Sản Phẩm</h4>
+                
+            </div>
+            <!-- table -->
+            <div class="col-11 mx-auto" style="overflow-y: scroll; height: 500px;">
+
+                <table class="table table-light shadow border table-hover   ">
+                    <thead>
+                        <tr>
+                            <th scope="col">Ảnh</th>
+                            <th scope="col">Mã Sản Phẩm</th>
+                            <th scope="col">Tên Sản Phẩm</th>
+                            <th scope="col">Giá </th>
+                            <th scope="col">Giảm Giá</th>
+                            <th scope="col">Thao Tác</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    
+                    
+                        <tr>
+                            <td>
+                            <img alt="" src="" style="height: 100px ; width: 120px">
+                            
+                            </td>
+                        
+                            <td >fo</td>
+                            <td>for</td>
+                            <td>for VND</td>
+                            <td>fo %</td>
+                            <td>
+                            <button type="submit"  class="btn btn-outline-primary">Chỉnh sửa</button>
+                            </td>
+                        </tr>
+                      
+                        
+                    </tbody>
+                </table>
+
+
+            </div>
+            
+                <!-- paging -->
+            <div class="d-flex justify-content-center">
+
+                <nav aria-label="Page navigation example mx-auto">
+                    
+                    
+                    
+                    <ul class="pagination">
+                        
+                        <li class="page-item">
+                        <a class="page-link" >Previous</a>
+                        </li>
+                    
+                     
+                    
+                        <li class="page-item">
+                        <a class="page-link"  >Next</a>
+                        </li>
+                    
+                    </ul>
+                    
+                </nav>
+            </div>
+
+
+        </div>
+
+
+
+    </form>
+
+
+
+</div>
+
+
+

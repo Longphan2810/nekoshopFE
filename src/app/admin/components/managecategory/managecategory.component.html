@@ -1,0 +1,77 @@
+<div class="container m-3">
+    <h3>Quản lý Loại Sản phẩm</h3>
+
+    <form action="/admin/category" method="post">
+        <div class="row">
+            <div class="col-11">
+                <div class="mb-3">
+                    <label for="idCategory" class="form-label">Mã Loại sản phẩm</label>
+                    <input type="number" name="idCategory" value="category.idCategory" readonly="readonly" class="form-control" id="idCategory" placeholder="Id Category">
+                </div>
+                <div class="mb-3">
+                    <label for="name" class="form-label">Tên Loại sản phẩm</label>
+                    <input type="text" name="name" value="category.name" class="form-control" id="name" placeholder="Quan abc, Ao abc ,..">
+                   
+                </div>
+            </div>
+            <div class="col-11 text-center mb-3">
+                <button type="submit" formaction="/admin/category/add" class="btn btn-outline-primary mx-2">Thêm</button>
+                <button type="submit" formaction="/admin/category/saveOrUpdate" class="btn btn-outline-primary mx-2">Cập Nhật</button>
+                <button type="submit" formaction="/admin/category/delete" class="btn btn-outline-primary mx-2">Xoá</button>
+                <button type="submit" formaction="/admin/category" class="btn btn-outline-primary mx-2">Làm Mới</button>
+            </div>
+        </div>
+    </form>
+    
+            <form  action="/admin/category/findbyname" method="get" role="search">
+            <div class=" col-12 row my-3">
+                
+                <div class="col-9 mx-auto">
+                    <input class="form-control me-2" type="text"
+                        placeholder="Search by name" name="name" aria-label="Search">
+                </div>
+                <div class="col-3 text-center">
+                    <button class="btn btn-outline-success" type="submit">Search</button>
+                </div>
+            
+            </div>
+            
+                </form>
+
+            <!-- Table -->
+            <div class="col-11 mx-auto"
+                style="overflow-y: scroll; height: 500px;">
+
+                <table class="table border shadow">
+                    <thead>
+                        <tr>
+                            <th scope="col">ID</th>
+                            <th scope="col">Name</th>
+                            <th scope="col">Action</th>
+
+                        </tr>
+                    </thead>
+                    <tbody>
+                        
+
+                            <tr>
+                                <th scope="row">cate.idCategory</th>
+                                <td>cate.name</td>
+                                <td><a href="/admin/category/edit/cate.idCategory">Edit</a></td>
+
+                            </tr>
+
+                      
+
+
+
+                    </tbody>
+                </table>
+            </div>
+
+
+
+        </div>
+    
+
+
