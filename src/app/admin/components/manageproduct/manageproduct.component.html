@@ -1,4 +1,4 @@
-	<div class="container m-3">
+	<div class="container ">
 						<h3>Quản lý Sản phẩm</h3>
 
 						<form action="/admin/product-test" method="post" enctype="multipart/form-data" modelAttribute="product">
@@ -7,12 +7,12 @@
 								<!-- left -->
 								<div class="col-5">
 
-									<img src=""
+									<img src="{{srcImage}}"
 										class="img-thumbnail border mx-auto" id="previewImage" alt="."
 										style="height: 260px; width: 400px">
 									<div class="input-group my-3 ">
 										<label class="input-group-text" for="inputGroupFile01">Upload
-											Image</label> <input type="file" required="required" name="imageFile"  class="form-control"
+											Image</label> <input type="file" required="required" (change)="changeImage($event)" name="imageFile"  class="form-control"
 											id="fileInput">
 									</div>
 

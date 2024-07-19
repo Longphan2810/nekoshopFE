@@ -1,4 +1,4 @@
-<div class="container m-3">
+<div class="container-fluid ">
     <h3>Quản lý Loại Sản phẩm</h3>
 
     <form action="/admin/category" method="post">
@@ -6,72 +6,77 @@
             <div class="col-11">
                 <div class="mb-3">
                     <label for="idCategory" class="form-label">Mã Loại sản phẩm</label>
-                    <input type="number" name="idCategory" value="category.idCategory" readonly="readonly" class="form-control" id="idCategory" placeholder="Id Category">
+                    <input type="number" [(ngModel)]="idCategory" name="idCategory" readonly="readonly"
+                        class="form-control" id="idCategory" placeholder="Id Category">
                 </div>
                 <div class="mb-3">
                     <label for="name" class="form-label">Tên Loại sản phẩm</label>
-                    <input type="text" name="name" value="category.name" class="form-control" id="name" placeholder="Quan abc, Ao abc ,..">
-                   
+                    <input type="text" [(ngModel)]="nameCategory" name="nameCategory" class="form-control" id="name"
+                        placeholder="Quan abc, Ao abc ,..">
+
                 </div>
             </div>
             <div class="col-11 text-center mb-3">
-                <button type="submit" formaction="/admin/category/add" class="btn btn-outline-primary mx-2">Thêm</button>
-                <button type="submit" formaction="/admin/category/saveOrUpdate" class="btn btn-outline-primary mx-2">Cập Nhật</button>
-                <button type="submit" formaction="/admin/category/delete" class="btn btn-outline-primary mx-2">Xoá</button>
-                <button type="submit" formaction="/admin/category" class="btn btn-outline-primary mx-2">Làm Mới</button>
+                <button type="button" (click)="postCate()" class="btn btn-outline-primary mx-2">Thêm</button>
+                <button type="button" (click)="putCate()" class="btn btn-outline-primary mx-2">Cập Nhật</button>
+                <a href="/admin" class="btn btn-outline-primary mx-2">Làm Mới</a>
             </div>
         </div>
     </form>
-    
-            <form  action="/admin/category/findbyname" method="get" role="search">
+
+
+
+    <!-- Table -->
+    <div class="col-11 mx-auto" style="overflow-y: scroll; height: 500px;">
+
+        <form action="/admin/category/findbyname" method="get" role="search">
             <div class=" col-12 row my-3">
-                
+
                 <div class="col-9 mx-auto">
-                    <input class="form-control me-2" type="text"
-                        placeholder="Search by name" name="name" aria-label="Search">
+                    <input class="form-control me-2"  [(ngModel)]="nameSearch" name="nameSearch" type="text" placeholder="Search by name" 
+                        aria-label="Search">
                 </div>
                 <div class="col-3 text-center">
-                    <button class="btn btn-outline-success" type="submit">Search</button>
+                    <button class="btn btn-outline-primary mx-2" (click)="getListByName()" type="button">Search</button>
+                    <a class="btn btn-outline-success" (click)="getListCate()">Refresh</a>
                 </div>
-            
-            </div>
-            
-                </form>
 
-            <!-- Table -->
-            <div class="col-11 mx-auto"
-                style="overflow-y: scroll; height: 500px;">
-
-                <table class="table border shadow">
-                    <thead>
-                        <tr>
-                            <th scope="col">ID</th>
-                            <th scope="col">Name</th>
-                            <th scope="col">Action</th>
-
-                        </tr>
-                    </thead>
-                    <tbody>
-                        
-
-                            <tr>
-                                <th scope="row">cate.idCategory</th>
-                                <td>cate.name</td>
-                                <td><a href="/admin/category/edit/cate.idCategory">Edit</a></td>
-
-                            </tr>
-
-                      
-
-
-
-                    </tbody>
-                </table>
             </div>
 
+        </form>
+
+        <table class="table border shadow">
+            <thead>
+                <tr>
+                    <th scope="col">ID</th>
+                    <th scope="col">Name</th>
+                    <th scope="col">Action</th>
+
+                </tr>
+            </thead>
+            <tbody>
 
 
-        </div>
-    
+                <tr *ngFor="let element of listCate">
+                    <th scope="row">{{element.idCategory}}</th>
+                    <td>{{element.name}}</td>
+                    <td>
+                        <button type="button" (click)="getEdit(element)" class="btn btn-outline-primary mx-2">Edit</button>
+                        <button type="button" (click)="deleteCate(element.idCategory)" class="btn btn-outline-danger mx-2">Delete</button>
+                    </td>
+
+                </tr>   
 
 
+
+
+
+
+
+            </tbody>
+        </table>
+    </div>
+
+
+
+</div>

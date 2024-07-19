@@ -14,7 +14,7 @@ const routes: Routes = [
   children:[
     {path : 'manageProduct', component: ManageproductComponent},
   
-    {path : 'manageCategory', component: ManagecategoryComponent},
+    {path : '', component: ManagecategoryComponent},
 
     {path : 'manageOrder', component: ManageorderComponent},
 
