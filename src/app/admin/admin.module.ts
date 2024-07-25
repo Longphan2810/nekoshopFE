@@ -11,7 +11,7 @@ import { ManagecategoryComponent } from './components/managecategory/managecateg
 import { ManageuserComponent } from './components/manageuser/manageuser.component';
 import { ManageorderComponent } from './components/manageorder/manageorder.component';
 import { ManageproductComponent } from './components/manageproduct/manageproduct.component';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -29,7 +29,8 @@ import { FormsModule } from '@angular/forms';
   imports: [
     CommonModule,
     AdminRoutingModule,
-    FormsModule
+    FormsModule,
+    ReactiveFormsModule
   ]
 })
 export class AdminModule { }

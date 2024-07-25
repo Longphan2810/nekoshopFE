@@ -14,6 +14,8 @@ const routes: Routes = [
   children:[
     {path : 'manageProduct', component: ManageproductComponent},
   
+    {path : 'manageProduct/:id', component: ManageproductComponent},
+
     {path : '', component: ManagecategoryComponent},
 
     {path : 'manageOrder', component: ManageorderComponent},

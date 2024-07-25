@@ -1,13 +1,22 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-uiadmin',
   templateUrl: './uiadmin.component.html',
   styleUrl: './uiadmin.component.css'
 })
-export class UiadminComponent {
+export class UiadminComponent  implements OnInit{
 
-  activeTab = "cate"
+  constructor( private  router : Router){}
+ activeTab = ""
+  ngOnInit(): void {
+    console.log(this.router.url.replace("/admin/",""))
+    this.activeTab = this.router.url.replace("/admin/","")
+   
+  }
+
+ 
 
   setActiveTab(nameTab: string) {
 
@@ -15,23 +24,23 @@ export class UiadminComponent {
       case "cate":
         this.activeTab = "cate"
         break;
-      case "ManageProduct":
-        this.activeTab = "ManageProduct"
+      case "manageProduct":
+        this.activeTab = "manageProduct"
         break;
-      case "ListProduct":
-        this.activeTab = "ListProduct"
+      case "listProduct":
+        this.activeTab = "listProduct"
         break;
-        case "ManageOrder":
-        this.activeTab = "ManageOrder"
+        case "manageOrder":
+        this.activeTab = "manageOrder"
         break;
-      case "ListOrder":
-        this.activeTab = "ListOrder"
+      case "listOrder":
+        this.activeTab = "listOrder"
         break;
-        case "ManageUser":
-        this.activeTab = "ManageUser"
+        case "lanageUser":
+        this.activeTab = "manageUser"
         break;
-      case "ListUser":
-        this.activeTab = "ListUser"
+      case "listUser":
+        this.activeTab = "listUser"
         break;
     }
 

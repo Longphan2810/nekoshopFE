@@ -1,7 +1,7 @@
 <div class="container-fluid ">
     <h3>Quản lý Loại Sản phẩm</h3>
 
-    <form action="/admin/category" method="post">
+    <form (ngSubmit)="onSubmit()" method="post">
         <div class="row">
             <div class="col-11">
                 <div class="mb-3">
@@ -11,14 +11,14 @@
                 </div>
                 <div class="mb-3">
                     <label for="name" class="form-label">Tên Loại sản phẩm</label>
-                    <input type="text" [(ngModel)]="nameCategory" name="nameCategory" class="form-control" id="name"
+                    <input type="text" [(ngModel)]="nameCategory" required   name="nameCategory" class="form-control" id="name"
                         placeholder="Quan abc, Ao abc ,..">
 
                 </div>
             </div>
             <div class="col-11 text-center mb-3">
-                <button type="button" (click)="postCate()" class="btn btn-outline-primary mx-2">Thêm</button>
-                <button type="button" (click)="putCate()" class="btn btn-outline-primary mx-2">Cập Nhật</button>
+                <button type="submit" (click)="postCate()"  class="btn btn-outline-primary mx-2">Thêm</button>
+                <button type="submit" (click)="putCate()"  class="btn btn-outline-primary mx-2">Cập Nhật</button>
                 <a href="/admin" class="btn btn-outline-primary mx-2">Làm Mới</a>
             </div>
         </div>

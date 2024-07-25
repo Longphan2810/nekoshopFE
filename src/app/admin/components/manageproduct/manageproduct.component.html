@@ -1,9 +1,9 @@
 	<div class="container ">
 						<h3>Quản lý Sản phẩm</h3>
 
-						<form action="/admin/product-test" method="post" enctype="multipart/form-data" modelAttribute="product">
+						<form action="" [formGroup]="productForm" method="post" enctype="multipart/form-data" >
 							<div class="row">
-								<input type="hidden" name ="idProductDB" value="formproductDB.idProductform">
+								<input type="hidden" name ="hidenIdProduct" [value]="hidenIdProduct" >
 								<!-- left -->
 								<div class="col-5">
 
@@ -12,7 +12,7 @@
 										style="height: 260px; width: 400px">
 									<div class="input-group my-3 ">
 										<label class="input-group-text" for="inputGroupFile01">Upload
-											Image</label> <input type="file" required="required" (change)="changeImage($event)" name="imageFile"  class="form-control"
+											Image</label> <input type="file"  (change)="changeImage($event)" formControlName="imageFile"  class="form-control"
 											id="fileInput">
 									</div>
 
@@ -22,21 +22,33 @@
 
 									<div class="mb-3">
 										<label for="exampleFormControlInput1" class="form-label">
-											Tên sản phẩm</label> <input type="text" required="required" name="name" value="formproductDB.nameform" class="form-control"
+											Tên sản phẩm</label> <input [class.is-invalid]="productForm.controls['name'].invalid &&  productForm.controls['name'].touched" type="text" required formControlName="name"  class="form-control"
 											id="exampleFormControlInput1" placeholder="Tên sản phẩm">
+											<div *ngIf="productForm.controls['name'].invalid &&  productForm.controls['name'].touched" class="text-danger">
+												Name is required
+											  </div>
 									</div>
 
 									<div class="row">
 										<div class="col-6">
 											<label for="exampleFormControlInput1" class="form-label">
-												Giá </label> <input type="number" min="0" required="required" name="price" value="formproductDB.priceform"  class="form-control" placeholder="Giá"
+												Giá </label> <input
+													[class.is-invalid] ="productForm.controls['price'].invalid && productForm.controls['price'].touched"
+												type="number" min="0" required="required" formControlName="price"  class="form-control" placeholder="Giá"
 												aria-label="First name">
+												<div *ngIf="productForm.controls['price'].invalid && productForm.controls['price'].touched" class="text-danger">
+													Price must be least at 1
+												</div>
+												
 										</div>
 
 										<div class="col-6">
 											<label for="exampleFormControlInput1" class="form-label">
-												Giảm giá</label> <input type="number" min="0" required="required" name="disscount" value="formproductDB.disscountform" class="form-control"
+												Giảm giá</label> <input [class.is-invalid]="productForm.controls['disscount'].invalid && productForm.controls['disscount'].touched" type="number" min="0" required="required" formControlName="disscount" class="form-control"
 												placeholder="%" aria-label="Last name">
+												<div *ngIf="productForm.controls['disscount'].invalid && productForm.controls['disscount'].touched" class="text-danger">
+													Disscount must be at least 0	
+												</div>
 										</div>
 
 										<div class="col-12">
@@ -49,24 +61,28 @@
 										
 										
 										<div class="form-floating mb-3 col-3">
-											<input type="number" min="0" name="sizeS" value="formproductSizeS.qualityform"  class="form-control" id="floatingInput"
+											<input type="number" [class.is-invalid]="productForm.controls['sizeS'].invalid && productForm.controls['sizeS'].touched " min="0" formControlName="sizeS" class="form-control" id="floatingInput"
 												placeholder="S"> <label
 												for="floatingInput" > <span class="mx-4"> S </span></label>
+												<span *ngIf="productForm.controls['sizeS'].invalid && productForm.controls['sizeS'].touched " class="text-danger"> Least at 0 </span>
 										</div>
 										<div class="form-floating mb-3 col-3">
-											<input type="number" min="0" name="sizeM" value="formproductSizeM.qualityform" class="form-control"  id="floatingInput"
+											<input type="number" min="0" [class.is-invalid]="productForm.controls['sizeM'].invalid && productForm.controls['sizeM'].touched " formControlName="sizeM"  class="form-control"  id="floatingInput"
 												placeholder="M"> <label
 												for="floatingInput"> <span class="mx-4"> M </span></label>
+												<span *ngIf="productForm.controls['sizeM'].invalid && productForm.controls['sizeM'].touched " class="text-danger"> Least at 0 </span>
 										</div>
 										<div class="form-floating mb-3 col-3">
-											<input type="number"  min="0"  name="sizeL" value="formproductSizeL.qualityform" class="form-control" id="floatingInput"
+											<input type="number"  min="0"  formControlName="sizeL" [class.is-invalid]="productForm.controls['sizeL'].invalid && productForm.controls['sizeL'].touched "  class="form-control" id="floatingInput"
 												placeholder="L"> <label
 												for="floatingInput"> <span class="mx-4"> L </span></label>
+												<span *ngIf="productForm.controls['sizeL'].invalid && productForm.controls['sizeL'].touched " class="text-danger"> Least at 0 </span>
 										</div>
 										<div class="form-floating mb-3 col-3">
-											<input type="number" min="0" name="sizeXL" value="formproductSizeXL.qualityform" class="form-control" id="floatingInput"
+											<input type="number" min="0" [class.is-invalid]="productForm.controls['sizeXL'].invalid && productForm.controls['sizeXL'].touched " formControlName="sizeXL" class="form-control" id="floatingInput"
 												placeholder="S"> <label
 												for="floatingInput"><span class="mx-4"> XL </span> </label>
+												<span *ngIf="productForm.controls['sizeXL'].invalid && productForm.controls['sizeXL'].touched " class="text-danger"> Least at 0 </span>
 										</div>
 										
 										
@@ -81,35 +97,39 @@
 
 									<div class="mb-3 mt-3">
 										<label for="exampleFormControlInput1" class="form-label">
-											Loại mặt hàng</label> <select name="idCategory" class="form-select"
+											Loại mặt hàng</label> 
+											 
+											<select
+											[class.is-invalid]="productForm.controls['idCategory'].invalid && productForm.controls['idCategory'].touched"
+											formControlName="idCategory" class="form-select"
 											aria-label="Default select example">
-											
-											
-												<option  value="formcate.idCategoryform"   >formcate.nameform</option>
-											
-											
-											
-											
-										
-											
+												<option *ngFor="let cate of listCate" [selected]="productForm.controls['idCategory'].value==cate.idCategory" value="{{cate.idCategory}}" >{{cate.name}}</option>
+			
 										</select>
+										<span class="text-danger" *ngIf="productForm.controls['idCategory'].invalid && productForm.controls['idCategory'].touched" >
+											Please Choose Category
+										</span>
 
 									</div>
 									<div class="mb-3 mt-3">
 										<label for="exampleFormControlInput1" class="form-label">
 											Trạng thái</label>
+											
 										<div class="form-check mx-3 form-check-inline">
-											<input class="form-check-input" type="radio" required="required" name="status"
-												 id="inlineRadio1" value="true">
+											<input class="form-check-input" type="radio" [checked]="productForm.controls['status'].value==true"  name="status" formControlName="status"
+												 id="inlineRadio1" value= "true" >
 											<label class="form-check-label" for="inlineRadio1">Đang
 												mở bán</label>
 										</div>
 										<div class="form-check mx-3 form-check-inline">
-											<input class="form-check-input" type="radio" name="status"
-												 id="inlineRadio2" value="false">
+											<input class="form-check-input" type="radio" [checked]="productForm.controls['status'].value==false" name="status" formControlName="status"
+												 id="inlineRadio2" value="false" >
 											<label class="form-check-label" for="inlineRadio2">Ngừng
 												Kinh Doanh</label>
 										</div>
+										<span class="text-danger" *ngIf="productForm.controls['status'].invalid && productForm.controls['status'].touched" >
+											Please Choose Category
+										</span>
 
 									</div>
 
@@ -126,16 +146,14 @@
 										Mô tả 
 										</label>
 										<textarea class="form-control"
-											id="exampleFormControlTextarea1" name="description" rows="10">formproductDB.descriptionform</textarea>
+											id="exampleFormControlTextarea1" formControlName="description" rows="10"></textarea>
 									</div>
 								</div>
 
 								<div class="col-11 text-center">
-									<button type="submit" formaction="/admin/product/add" class="btn btn-outline-primary mx-2">Thêm</button>
-									<button type="submit" formaction="/admin/product/SaveOrUpdate" class="btn btn-outline-primary mx-2">Cập
+									<button type="submit" [disabled]="productForm.invalid" (click)="postForm()" formaction="postForm()" class="btn btn-outline-primary mx-2">Thêm</button>
+									<button type="submit" [disabled]="productForm.invalid" (click)="putForm()"  class="btn btn-outline-primary mx-2">Cập
 										Nhật</button>
-									<a  href="/admin/product/delete/formproductDB.idProduct==null?'-1':productDB.idProductform"  class="btn btn-outline-primary mx-2">Xoá</a>
-									
 									<a  href="/admin/product/refresh" class="btn btn-outline-primary mx-2">Làm
 										Mới</a>
 
