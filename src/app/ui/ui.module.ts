@@ -10,6 +10,11 @@ import { DetailComponent } from './components/detail/detail.component';
 import { ShopingCartComponent } from './components/shoping-cart/shoping-cart.component';
 import { CheckOutComponent } from './components/check-out/check-out.component';
 
+import { LoginComponent } from './components/login/login.component';
+import { RegisterComponent } from './components/register/register.component';
+import { ReactiveFormsModule } from '@angular/forms';
+import { VerifyRegisterComponent } from './components/verify-register/verify-register.component';
+
 @NgModule({
   declarations: [
     UiComponent,
@@ -18,11 +23,15 @@ import { CheckOutComponent } from './components/check-out/check-out.component';
     ShopComponent,
     DetailComponent,
     ShopingCartComponent,
-    CheckOutComponent
+    CheckOutComponent,
+    LoginComponent,
+    RegisterComponent,
+    VerifyRegisterComponent
   ],
   imports: [
     CommonModule,
-    UiRoutingModule
+    UiRoutingModule,
+    ReactiveFormsModule
   ]
 })
 export class UiModule { }

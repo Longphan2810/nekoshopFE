@@ -1,4 +1,4 @@
-<form action="/addToCard" method="post" >
+<form *ngIf="product" action="/addToCard" method="post" >
 	<!-- Shop Detail Start -->
 	<div class="container-fluid py-5">
 		<div class="row px-xl-5">
@@ -8,7 +8,7 @@
 					<div class="carousel-inner border">
 						<div class="carousel-item active">
 							<img class="w-100 h-100"
-                            src="img/product-1.jpg" alt="Image">
+                            src="http://localhost:8080/images/{{product.nameImage}}" alt="Image">
 						</div>
 
 					</div>
@@ -17,9 +17,9 @@
 			</div>
 
 			<div class="col-lg-7 pb-5">
-				<h3 class="font-weight-semi-bold">productDB.name</h3>
+				<h3 class="font-weight-semi-bold">{{product.name}}</h3>
 
-				<h4 class="font-weight-semi-bold mb-4">Price :
+				<h4 class="font-weight-semi-bold mb-4">Price : {{product.price}}
 					</h4>
 				<p class="mb-4">productDB.description Volup erat ipsum diam
 					elitr rebum et dolor. Est nonumy elitr erat diam stet sit clita ea.
@@ -31,7 +31,22 @@
 					<p class="text-dark font-weight-medium mb-0 mr-3 p-2">Size</p>
 							
 							
-							
+					<span class="ms-1 border p-2 d-flex  flex-nowrap"> <input type="radio"
+						class="custom-control-input" id="sizeS"  required="required" name="size" value=""> <label
+						class="custom-control-label fs-6" for="size-1"> Size S <br> (Còn: {{product.sizeS}} SP)</label>
+					</span> 
+					<span class="ms-1 border p-2 d-flex  flex-nowrap"> <input type="radio"
+						class="custom-control-input" id="sizeM"  required="required" name="size" value=""> <label
+						class="custom-control-label fs-6" for="size-1"> Size M <br> (Còn: {{product.sizeM}} SP)</label>
+					</span> 
+					<span class="ms-1 border p-2 d-flex  flex-nowrap"> <input type="radio"
+						class="custom-control-input" id="sizeL"  required="required" name="size" value=""> <label
+						class="custom-control-label fs-6" for="size-1"> Size L <br> (Còn: {{product.sizeL}} SP)</label>
+					</span> 
+					<span class="ms-1 border p-2 d-flex  flex-nowrap"> <input type="radio"
+						class="custom-control-input" id="sizeXL"  required="required" name="size" value=""> <label
+						class="custom-control-label fs-6" for="size-1"> Size XL <br> (Còn: {{product.sizeXL}} SP)</label>
+					</span> 
 						
 					
 				</div>
@@ -68,15 +83,10 @@
 	
  <div class="container">
 	<div class="w-100 container-fluid  row">
-        <div class="col-lg-4 col-md-6 col-sm-12 ">
-            <app-product></app-product>
+        <div *ngFor="let p of  listProduct" class="col-lg-4 col-md-6 col-sm-12 ">
+            <app-product [product]="p"></app-product>
         </div>
-        <div class="col-lg-4 col-md-6 col-sm-12 ">
-            <app-product></app-product>
-        </div>
-        <div class="col-lg-4 col-md-6 col-sm-12 ">
-            <app-product></app-product>
-        </div>
+       
 		
 	
 	</div>

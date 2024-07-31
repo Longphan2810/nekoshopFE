@@ -73,11 +73,11 @@
 				
 				<div class="collapse show" id="collapseExample">
 					<div class="card card-body">
-					<nav class="collapse show navbar navbar-vertical navbar-light align-items-start p-0 border border-top-0 border-bottom-0" id="navbar-vertical">
+					<nav class="collapse show navbar navbar-vertical navbar-light align-items-start p-0  border-top-0 border-bottom-0" id="navbar-vertical">
                     <div class="navbar-nav w-100 overflow-hidden" style="height: 410px">
                         
                       
-                        
+                  <a *ngFor="let cate of categorys" href="/shop?cate={{cate.name}}" class="nav-item nav-link">{{cate.name}}</a>
                        
                         
                     </div>
@@ -106,21 +106,23 @@
 							
 						</div>
 						
-			
-						<div class="navbar-nav ml-auto py-0">
-							<a href="login-form" class="nav-item nav-link">Login</a>
-							 <a href="/register-form"
+						
+						<div *ngIf="loggedIn==false" class="navbar-nav ml-auto py-0">
+							<a href="/user/login" class="nav-item nav-link">Login</a>
+							 <a href="/user/register"
 								class="nav-item nav-link">Register</a>
+								
 						</div>
 						
 				
 				
-						<div class="navbar-nav ml-auto py-0">
+						<div *ngIf="loggedIn==true" class="navbar-nav ml-auto py-0">
 							
 							 <a href="/infoUser"
 								class="nav-item nav-link">Thông tin tài khoản</a>
-								 <a href="/log-out"
+								 <a href="/user/login" (click)="getLogout()"
 								class="nav-item nav-link">Log-out</a>
+								
 						</div>
 						
 			

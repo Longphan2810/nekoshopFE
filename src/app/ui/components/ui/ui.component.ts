@@ -1,10 +1,30 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { CategoryService } from '../../../service/category.service';
+import { LoginService } from '../../../service/login.service';
 
 @Component({
   selector: 'app-ui',
   templateUrl: './ui.component.html',
-  styleUrl: './ui.component.css'
+  styleUrls: ['./ui.component.css']
 })
-export class UiComponent {
+export class UiComponent implements OnInit {
+  categorys = new Array();
+  loggedIn = false;
 
+  constructor(private cateService: CategoryService, public loginService: LoginService) {}
+
+  getLogout() {
+    this.loginService.getLogout();
+    this.loggedIn = this.loginService.getLoggedin(); 
+  }
+
+  getCategorys() {
+    this.cateService.getListCate().subscribe(
+      data => { this.categorys = data.result; }
+    );
+  }
+
+  ngOnInit(): void {
+    this.getCategorys()
+  }
 }

@@ -1,132 +1,141 @@
-	<!-- Shop Start -->
-	<div class="container-fluid ">
-		<div class="row px-xl-5">
-			<!-- Shop Sidebar Start -->
-			<div class="col-lg-3 col-md-12">
-				<!-- Price Start -->
-				<div class="border-bottom mb-4 pb-4">
-
-					<h5 class="font-weight-semi-bold mb-4">Filter by price</h5>
-				
-					<form action="" method="get">
-						
-						
-						<input type="hidden" name="sortBy" value="${sortCurrent}" >
-						<input type="hidden" name="keywords" value="${keywords}" >
-						
-					
-						
-						<div
-							class="custom-control custom-checkbox d-flex align-items-center justify-content-between mb-3">
-							<input type="radio" class="custom-control-input "
-								 name="filterByPrice"
-								value="all" id="price-all"> <label
-								class="custom-control-label ms-3" for="price-all">All
-								Price</label> <span class="rounded-pill border px-2 ms-auto"></span>
-						</div>
-						<div
-							class="custom-control custom-checkbox d-flex align-items-center justify-content-between mb-3">
-							<input type="radio" class="custom-control-input"
-								name="filterByPrice"
-								value="50" id="price-1"> <label
-								class="custom-control-label ms-3" for="price-1">0 -
-								50000 VND</label> <span class="rounded-pill border px-2 ms-auto"></span>
-						</div>
-						<div
-							class="custom-control custom-checkbox d-flex align-items-center justify-content-between mb-3">
-							<input type="radio" class="custom-control-input"
-								 name="filterByPrice"
-								value="100" id="price-2"> <label
-								class="custom-control-label ms-3" for="price-2">50000 -
-								100000</label> <span class="rounded-pill border px-2 ms-auto"></span>
-						</div>
-						<div
-							class="custom-control custom-checkbox d-flex align-items-center justify-content-between mb-3">
-							<input type="radio" class="custom-control-input"
-								name="filterByPrice"
-								value="200" id="price-3"> <label
-								class="custom-control-label ms-3" for="price-3">100000 -
-								200000</label> <span class="rounded-pill border px-2 ms-auto"></span>
-						</div>
-						<div
-							class="custom-control custom-checkbox d-flex align-items-center justify-content-between mb-3">
-							<input type="radio" class="custom-control-input"
-							name="filterByPrice"
-								value="200+" id="price-4"> <label
-								class="custom-control-label ms-3" for="price-4">200000+
-								vnd</label> <span class="rounded-pill border px-2 ms-auto"></span>
-						</div>
 
 
-						<div class="my-2">
-							<button type="submit" class="btn btn-outline-primary">Lọc</button>
+<!-- Shop Start -->
+<div class="container-fluid ">
+	<div class="row px-xl-5">
+		<!-- Shop Sidebar Start -->
+		<div class="col-lg-3 col-md-12">
+			<!-- Price Start -->
+			<div class="border-bottom mb-4 pb-4">
 
-						</div>
-					</form>
-				</div>
-				<!-- Price End -->
+				<h5 class="font-weight-semi-bold mb-4">Filter by price</h5>
+
+				<form action="/shop?{{cateForUrl}}page={{page}}&&sortBy={{sortBy}}&&filterByPrice={{filterByPrice}}&&keyword={{keyword}}" method="get">
+
+
+					<!-- <input type="hidden" name="sortBy" value="${sortCurrent}">
+					<input type="hidden" name="keywords" value="${keywords}"> -->
 
 
 
-			</div>
-			<!-- Shop Sidebar End -->
-
-
-			<!-- Shop Product Start -->
-			<div class="col-lg-9 col-md-12">
-				<div class="row pb-3">
-					<div class="col-12 pb-1">
-					
-						<h2>Các sản phẩm : </h2>
-					
-						<div
-							 class="d-flex align-items-center justify-content-between mb-4">
-							
-							<div class="dropdown">
-								<button class="btn border dropdown-toggle" type="button"
-									data-bs-toggle="dropdown" aria-expanded="false"></button>
-								<ul class="dropdown-menu">
-									<li><a class="dropdown-item"
-										>price
-											low to high</a></li>
-									<li><a class="dropdown-item"
-										>price
-											high to low</a></li>
-
-								</ul>
-							</div>
-						</div>
+					<div class="custom-control custom-checkbox d-flex align-items-center justify-content-between mb-3">
+						<input type="radio" class="custom-control-input "  name="filterByPrice" [checked]="filterByPrice=='all'" (click) ="changefilterByPrice('all')" value="all"
+							id="price-all"> <label class="custom-control-label ms-3" for="price-all">All
+							Price</label> <span class="rounded-pill border px-2 ms-auto"></span>
 					</div>
-                    <!--============= product ================-->
-                    <div class="col-lg-4 col-md-6 col-sm-12 ">
-                        <app-product></app-product>
-                    </div>
-                    <div class="col-lg-4 col-md-6 col-sm-12 ">
-                        <app-product></app-product>
-                    </div>
-                    <div class="col-lg-4 col-md-6 col-sm-12 ">
-                        <app-product></app-product>
-                    </div>
-                    <div class="col-lg-4 col-md-6 col-sm-12 ">
-                        <app-product></app-product>
-                    </div>
-                    <div class="col-lg-4 col-md-6 col-sm-12 ">
-                        <app-product></app-product>
-                    </div>
-                    <div class="col-lg-4 col-md-6 col-sm-12 ">
-                        <app-product></app-product>
-                    </div>
-                    <!--============= product ================-->
+					<div class="custom-control custom-checkbox d-flex align-items-center justify-content-between mb-3">
+						<input type="radio" class="custom-control-input" name="filterByPrice" [checked]="filterByPrice=='50'" (click) ="changefilterByPrice('50')" value="50" id="price-1">
+						<label class="custom-control-label ms-3" for="price-1">0 -
+							50000 VND</label> <span class="rounded-pill border px-2 ms-auto"></span>
+					</div>
+					<div class="custom-control custom-checkbox d-flex align-items-center justify-content-between mb-3">
+						<input type="radio" class="custom-control-input" name="filterByPrice" [checked]="filterByPrice=='100'" (click) ="changefilterByPrice('100')" value="100" id="price-2">
+						<label class="custom-control-label ms-3" for="price-2">50000 -
+							100000</label> <span class="rounded-pill border px-2 ms-auto"></span>
+					</div>
+					<div class="custom-control custom-checkbox d-flex align-items-center justify-content-between mb-3">
+						<input type="radio" class="custom-control-input" name="filterByPrice" [checked]="filterByPrice=='200'" (click) ="changefilterByPrice('200')" value="200" id="price-3">
+						<label class="custom-control-label ms-3" for="price-3">100000 -
+							200000</label> <span class="rounded-pill border px-2 ms-auto"></span>
+					</div>
+					<div class="custom-control custom-checkbox d-flex align-items-center justify-content-between mb-3">
+						<input type="radio" class="custom-control-input" name="filterByPrice" [checked]="filterByPrice=='200+'" (click) ="changefilterByPrice('200+')" value="200+" id="price-4">
+						<label class="custom-control-label ms-3" for="price-4">200000+
+							vnd</label> <span class="rounded-pill border px-2 ms-auto"></span>
+					</div>
 
 
+					<div class="my-2">
+						<a href="/shop?{{cateForUrl}}page={{page}}&&sortBy={{sortBy}}&&filterByPrice={{filterByPrice}}&&keyword={{keyword}}" type="submit" class="btn btn-outline-primary">Lọc</a>
 
-				
-				</div>
+					</div>
+				</form>
 			</div>
-			<!-- Shop Product End -->
+			<!-- Price End -->
+
+
+
 		</div>
+		<!-- Shop Sidebar End -->
 
 
+		<!-- Shop Product Start -->
+		<div class="col-lg-9 col-md-12">
+			<div class="row pb-3">
+				<div class="d-flex align-items-center justify-content-between mb-4">
+
+					<div class=" p-2">
+						<span class="p-2 fs-2"> Sort : </span>
+						<!-- "/shop/{{cateForUrl}}p=0&&sortBy=price low to high&&filterByPrice=${filterByPrice}&&keywords=${keywords}" -->
+						<a type="button"   href="/shop?{{cateForUrl}}page={{page}}&&sortBy=price low to high&&filterByPrice={{filterByPrice}}&&keyword={{keyword}}" class="btn mx-1 text-dark btn-outline-light border">
+							<input type="radio" readonly name="sort" [checked]="sortBy=='price low to high'" > price
+							low to high
+						</a>
+						<a type="button" href="/shop?{{cateForUrl}}page={{page}}&&sortBy=price high to low&&filterByPrice={{filterByPrice}}&&keyword={{keyword}}" class="btn mx-1 text-dark btn-outline-light border">
+							<input type="radio"  readonly name="sort" [checked]="sortBy=='price high to low'"> price
+							high to low
+						</a>
+
+					  </div>
+
+
+				</div>
+				<div class="col-12 pb-1">
+
+					<h2>Các sản phẩm : </h2>
+
+					
+				</div>
+				<!--============= product ================-->
+				<div *ngFor="let p of products" class="col-lg-4 col-md-6 col-sm-12 ">
+					<app-product [product]="p"></app-product>
+					
+				</div>
+
+				<!--============= product ================-->
+
+				<div class=" w-100">
+
+					<nav *ngIf="pageRespone" class="" aria-label="Page navigation example">
+						<ul class="pagination justify-content-center">
+							<li class="page-item">
+
+								<a class="page-link" *ngIf="pageRespone.number>0" onclick="return true;"
+									href="/shop?{{cateForUrl}}page={{pageRespone.number-1}}&&sortBy={{sortBy}}&&filterByPrice={{filterByPrice}}&&keyword={{keyword}}">Previous</a>
+								<a class="page-link" *ngIf="pageRespone.number<=0" onclick="return false;"
+									>Previous</a>
+							</li>
+
+
+							<li class="page-item">
+								<a class="page-link" *ngIf="pageRespone.number-1>=0" 
+									href="/shop?{{cateForUrl}}page={{pageRespone.number-1}}&&sortBy={{sortBy}}&&filterByPrice={{filterByPrice}}&&keyword={{keyword}}">{{pageRespone.number}}</a>
+							</li>
+							<li class="page-item"> 
+								<a class="page-link"  *ngIf="pageRespone.number<pageRespone.totalPages"
+									href="/shop?{{cateForUrl}}page={{pageRespone.number}}&&sortBy={{sortBy}}&&filterByPrice={{filterByPrice}}&&keyword={{keyword}}">{{pageRespone.number+1 }}</a>
+							</li>
+							<li class="page-item">
+								<a class="page-link" *ngIf="pageRespone.number+1<pageRespone.totalPages" href="/shop?{{cateForUrl}}page={{pageRespone.number+1}}&&sortBy={{sortBy}}&&filterByPrice={{filterByPrice}}&&keyword={{keyword}}">{{pageRespone.number+2}}</a>
+						
+							</li>
+
+							<li class="page-item">
+								
+								<a class="page-link" *ngIf="pageRespone.number<pageRespone.totalPages-1"  onclick="return true;" href="/shop?{{cateForUrl}}page={{pageRespone.number+1}}&&sortBy={{sortBy}}&&filterByPrice={{filterByPrice}}&&keyword={{keyword}}">Next</a>
+								<a class="page-link" *ngIf="pageRespone.number>=pageRespone.totalPages-1"  onclick="return false;" href="/shop?{{cateForUrl}}page={{pageRespone.number+1}}&&sortBy={{sortBy}}&&filterByPrice={{filterByPrice}}&&keyword={{keyword}}">Next</a>
+						
+							</li>
+						</ul>
+					</nav>
+				</div>
+
+
+			</div>
+		</div>
+		<!-- Shop Product End -->
 	</div>
-	<!-- Shop End -->
 
+
+</div>
+<!-- Shop End -->
