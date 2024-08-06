@@ -16,65 +16,56 @@
 
         <div class=" my-4 border shadow-sm ">
             <!-- sơ lượt sản phẩm -->
-            <div class="   py-3  border-bottom d-flex flex-nonwrap">
+            <div *ngIf="formUpdate" class="   py-3  border-bottom d-flex flex-nonwrap">
 
 
-                <form action="/locationCostumer/update-Address" method="post"
-                    class="row g-3 m-3">
-                    <input type="hidden" name="idDeliveryAddress"
-                        value="${deliveryAddress.idDeliveryAddress}">
-                    <div class="col-md-6">
-                        <label for="inputEmail4" class="form-label">Họ và tên</label> <input
-                            type="text" required="required" name="name"
-                            value="${deliveryAddress.name}" class="form-control"
-                            id="inputEmail4">
+                <form  [formGroup]="formUpdate"
+                class="row g-3 m-3">
+                <div class="col-md-6">
+                    <label for="inputEmail4" class="form-label">Họ và tên</label> <input
+                        type="text" formControlName="name" required="required" name="name"
+                        class="form-control" id="inputEmail4">
+                </div>
+                <div class="col-md-6">
+                    <label for="inputPassword4" class="form-label">Số điện
+                        thoại</label> <input type="text" formControlName="phone" required="required" minlength="10"
+                        name="phone" class="form-control" id="inputPassword4">
+
+
+                </div>
+                <div class="col-12">
+                    <label for="inputAddress" class="form-label">Tỉnh/Thành
+                        phố</label> <input type="text" formControlName="city" required="required" name="city"
+                        class="form-control" id="inputAddress"
+                        placeholder="1234 Main St">
+                </div>
+
+
+                <div class="col-md-12">
+                    <label for="inputCity" class="form-label">Địa chỉ</label> <input
+                        type="text" formControlName="address" required="required" class="form-control"
+                        name="address" id="inputCity">
+                </div>
+
+                <div class="col-md-12">
+                    <div class="form-check">
+                        <input class="form-check-input" formControlName="status" name="status" type="checkbox"
+                            value="true" id="flexCheckDefault"> <label
+                            class="form-check-label" for="flexCheckDefault"> Địa
+                            chỉ mặc định </label>
                     </div>
-                    <div class="col-md-6">
-                        <label for="inputPassword4" class="form-label">Số điện
-                            thoại</label> <input type="text" required="required" minlength="10"
-                            name="phone" value="${deliveryAddress.phone}"
-                            class="form-control" id="inputPassword4">
-
-                 
-
-
-                    </div>
-                    <div class="col-12">
-                        <label for="inputAddress" class="form-label">Tỉnh/Thành
-                            phố</label> <input type="text" required="required"
-                            value="${deliveryAddress.city}" name="city"
-                            class="form-control" id="inputAddress"
-                            placeholder="1234 Main St">
-                    </div>
-
-
-                    <div class="col-md-12">
-                        <label for="inputCity" class="form-label">Địa chỉ</label> <input
-                            type="text" value="${deliveryAddress.address}"
-                            required="required" class="form-control" name="address"
-                            id="inputCity">
-                    </div>
-
-                    <div class="col-md-12">
-                        <div class="form-check">
-                            <input class="form-check-input"
-                                 name="status"
-                                type="checkbox" value="true" id="flexCheckDefault"> <label
-                                class="form-check-label" for="flexCheckDefault"> Địa
-                                chỉ mặc định </label>
-                        </div>
-                    </div>
+                </div>
 
 
 
-                    <div class="col-12">
-                        <button type="submit" class="btn btn-primary">Lưu địa
-                            chỉ</button>
-                    </div>
+                <div class="col-12">
+                    <button type="button" [disabled]="formUpdate.invalid" (click)="putAdress()"  class="btn btn-primary">Lưu địa
+                        chỉ</button>
+                </div>
 
 
 
-                </form>
+            </form>
 
 
 

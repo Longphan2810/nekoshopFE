@@ -1,5 +1,5 @@
   <!-- Cart Start -->
-  <div class="container-fluid pt-5">
+  <div *ngIf="shopCart" class="container-fluid pt-5">
     <div class="row px-xl-5">
        
        
@@ -24,28 +24,31 @@
                     
                     
                     
-                   <tr>
+                   <tr *ngFor="let cart of shopCart">
                    
-                        <td class="align-middle"><img src="img/product-1.jpg" alt="" style="width: 50px;">
-                         Size  <br> ( còn :  SP)                     	
+                        <td class="align-middle"><img src="http://localhost:8080/images/{{cart.imgName}}" alt="" style="width: 100px;">
+                        {{cart.size}} <br> 
+                         {{cart.name}} (Còn <span *ngFor=" let p of checkCart"> <span *ngIf="p.idProductDetail==cart.idProductDetail">{{p.quality}} </span></span> sp)
+                                        	
                         </td>
-                        <td class="align-middle"> VND</td>
+                        <td class="align-middle"> {{cart.price}} VND</td>
                         <td class="align-middle">
                             <div class="input-group quantity mx-auto" style="width: 100px;">
-                              <form action="/shopCart/Update">
-                                <input type="number" name="quality" onblur="this.form.submit()" class="form-control form-control-sm  text-center" value="">
-                                <input type="hidden" name="idProductDetailInHashMap" value="">
+                              <form >
+                                <input type="number" name="quality" (blur)="putCart($event)" 
+                                [attr.idProductDetail]="cart.idProductDetail"    class="form-control form-control-sm  text-center" value="{{cart.quantity}}">
+                              
                                </form>
                             </div>
                         </td>
                         <td class="align-middle">
-                        
-                   
+                            
+                            {{cart.price*cart.quantity}} VND
                         </td>
-                      
+                       
                         <td class="align-middle">
                           <form action="/shopCart/remove/${item.key.idProductDetail}" method="get">
-                        <button type="submit" class="btn btn-sm btn-danger"><i class="fa fa-times"></i></button>
+                        <button type="button" (click)="deleteCart(cart.idProductDetail)" class="btn btn-sm btn-danger"><i class="fa fa-times"></i></button>
                             </form>
                         </td>
                             
@@ -58,6 +61,7 @@
                   
                 </tbody>
             </table>
+            
         </div>
         
         
@@ -79,16 +83,16 @@
                     </div>
                     <div class="d-flex justify-content-between">
                         <h6 class="font-weight-medium">Shipping</h6>
-                        <h6 class="font-weight-medium">$0</h6>
+                        <h6 class="font-weight-medium">0 VND</h6>
                     </div>
                 </div>
                 <div class="card-footer border-secondary bg-transparent">
                     <div class="d-flex justify-content-between mt-2">
                         <h5 class="font-weight-bold">Total</h5>
-                        <h5 class="font-weight-bold"> </h5>
+                        <h5 class="font-weight-bold"> {{tong}} VND</h5>
                     </div>
                     <form action="/checkout" method="get">
-                    <button type="submit" class="btn btn-block btn-primary my-3 py-3">Proceed To Checkout</button>
+                    <a type="submit" href="/checkOut" class="btn btn-block btn-primary my-3 py-3">Proceed To Checkout</a>
                     </form>
                 </div>
             </div>

@@ -8,9 +8,6 @@
 
         <!-- Địa chỉ mới-->
 
-
-
-
         <!-- Địa chỉ -->
 
         <div class=" my-4 border shadow-sm ">
@@ -18,23 +15,23 @@
             <div class="   py-3  border-bottom d-flex flex-nonwrap">
 
 
-                <form action="/locationCostumer/add-Address" method="post"
+                <form  [formGroup]="form"
                     class="row g-3 m-3">
                     <div class="col-md-6">
                         <label for="inputEmail4" class="form-label">Họ và tên</label> <input
-                            type="text" required="required" name="name"
+                            type="text" formControlName="name" required="required" name="name"
                             class="form-control" id="inputEmail4">
                     </div>
                     <div class="col-md-6">
                         <label for="inputPassword4" class="form-label">Số điện
-                            thoại</label> <input type="text" required="required" minlength="10"
+                            thoại</label> <input type="text" formControlName="phone" required="required" minlength="10"
                             name="phone" class="form-control" id="inputPassword4">
 
     
                     </div>
                     <div class="col-12">
                         <label for="inputAddress" class="form-label">Tỉnh/Thành
-                            phố</label> <input type="text" required="required" name="city"
+                            phố</label> <input type="text" formControlName="city" required="required" name="city"
                             class="form-control" id="inputAddress"
                             placeholder="1234 Main St">
                     </div>
@@ -42,13 +39,13 @@
 
                     <div class="col-md-12">
                         <label for="inputCity" class="form-label">Địa chỉ</label> <input
-                            type="text" required="required" class="form-control"
+                            type="text" formControlName="address" required="required" class="form-control"
                             name="address" id="inputCity">
                     </div>
 
                     <div class="col-md-12">
                         <div class="form-check">
-                            <input class="form-check-input" name="status" type="checkbox"
+                            <input class="form-check-input" formControlName="status" name="status" type="checkbox"
                                 value="true" id="flexCheckDefault"> <label
                                 class="form-check-label" for="flexCheckDefault"> Địa
                                 chỉ mặc định </label>
@@ -58,7 +55,7 @@
 
 
                     <div class="col-12">
-                        <button type="submit" class="btn btn-primary">Lưu địa
+                        <button type="button" [disabled]="form.invalid" (click)="postAdress()" class="btn btn-primary">Lưu địa
                             chỉ</button>
                     </div>
 

@@ -1,44 +1,41 @@
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+
 <h3 class="ms-5">Thanh Toán</h3>
 
-	<div class="container-fluid w-75 ">
-		<!-- Dia chi giao -->
 
+	<div *ngFor="let address of listAddres">
 
-
-				<div class="card border-secondary w-100">
-					<div class="card-header   border">
-						<h4 class="font-weight-semi-bold m-0">Giao tới</h4>
-					</div>
-					
-					
-					<div class="card-body">
-					
-		
-						
-						<div class="d-flex justify-content-between">
-							<h6 class="font-weight-medium"></h6>
-							<h6 class="font-weight-medium">
-								<a href="#" class="" data-bs-toggle="modal"
-									data-bs-target="#exampleModal">Thay Đổi</a>
-							</h6>
+		<div *ngIf="address.status" class="container-fluid w-75 ">
+			<!-- Dia chi giao -->
+	
+					<div class="card border-secondary w-100">
+						<div class="card-header   border">
+							<h4 class="font-weight-semi-bold m-0">Giao tới</h4>
 						</div>
 						
-
-					</div>
-
-
-
-				</div>
-
-
-
-
+						
+						<div class="card-body">
+						
 			
-
-
-
-
+							
+							<div class="d-flex justify-content-between">
+								<h6 class="font-weight-medium">{{address.name}} <br> {{address.phone}} <br>  <br> </h6>
+								<h6 class="font-weight-medium">
+									{{address.address}}
+								</h6>
+							</div>
+							
+	
+						</div>
+	
+	
+	
+					</div>
+	
+		</div>
 	</div>
+	
 	<!-- Cart Start -->
 	<div class="container-fluid pt-5">
 
@@ -55,19 +52,52 @@
 							<th>Price</th>
 							<th>Quantity</th>
 							<th>Total</th>
-							<th>Remove</th>
+							
 						</tr>
 					</thead>
 					<tbody class="align-middle">
-
 					
-
-
-
-
+				 
+					
+						
+						
+						
+					   <tr *ngFor="let cart of shopCart">
+					   
+							<td class="align-middle"><img src="http://localhost:8080/images/{{cart.imgName}}" alt="" style="width: 100px;">
+							{{cart.size}} <br> 
+							 {{cart.name}} (Còn <span *ngFor=" let p of checkCart"> <span *ngIf="p.idProductDetail==cart.idProductDetail">{{p.quality}} </span></span> sp)
+												
+							</td>
+							<td class="align-middle"> {{cart.price}} VND</td>
+							<td class="align-middle">
+								<div class="input-group quantity mx-auto" style="width: 100px;">
+								  <form >
+									<input type="number" name="quality" readonly
+									[attr.idProductDetail]="cart.idProductDetail"    class="form-control form-control-sm  text-center" value="{{cart.quantity}}">
+								  
+								   </form>
+								</div>
+							</td>
+							<td class="align-middle">
+								
+								{{cart.price*cart.quantity}} VND
+							</td>
+						   
+							
+								
+						</tr>
+							   
+		 
+					 
+					
+						
+					  
 					</tbody>
 				</table>
+				
 			</div>
+			
 
 
 
@@ -106,18 +136,13 @@
 								class="form-check-label" for="flexRadioDefault1">
 								Thanh toán bằng tiền mặt </label>
 						</div>
-						<div class="form-check">
-							<input class="form-check-input" type="radio" 
-								name="paymentMethods" value="VNpay" id="flexRadioDefault2" >
-							<label class="form-check-label" for="flexRadioDefault2">
-								Thanh toán bằng VNpay  </label>
-						</div>
+						
 
 					</div>
 					<div class="card-footer border-secondary bg-transparent">
 						<div class="d-flex justify-content-between mt-2">
 							<h5 class="font-weight-bold">Total</h5>
-							<h5 class="font-weight-bold">
+							<h5 class="font-weight-bold"> {{tong}}
 						
 							</h5>
 						</div>
@@ -174,3 +199,49 @@
 		</div>
 	</form>
 
+<!-- Modal đổi địa chỉ giao -->
+<form  method="post">
+	<div class="modal fade" id="exampleModal" tabindex="-1"
+		aria-labelledby="exampleModalLabel" aria-hidden="true">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h1 class="modal-title fs-5" id="exampleModalLabel">Địa chỉ
+						của tôi</h1>
+					<button type="button" class="btn-close" data-bs-dismiss="modal"
+						aria-label="Close"></button>
+				</div>
+				<div class="modal-body ">
+
+
+
+					
+					<div var="element" items="${listDeliveryInUser}">
+						<!-- địa chỉ  -->
+						<div class="form-check border-bottom">
+							<input class="form-check-input" 
+								required="required" value="${element.idDeliveryAddress}"
+								type="radio" name=idDeliveryAddress id="flexRadioDefault1">
+							<label class="form-check-label" for="flexRadioDefault1">
+								element.name <br> ( element.phone)<br>
+								<div>element.address, element.city</div>
+							</label>
+						</div>
+						<!-- địa chỉ  -->
+
+					</div>
+
+
+				</div>
+				<div class="modal-footer">
+					
+					<button type="submit" class="btn btn-primary">Save
+						changes</button>
+					<button type="submit" formaction="/locationCostumer/add-form" formmethod="get" class="btn btn-primary">Thêm mới</button>
+				<button type="button" class="btn btn-secondary"
+						data-bs-dismiss="modal">Close</button>
+				</div>
+			</div>
+		</div>
+	</div>
+</form>

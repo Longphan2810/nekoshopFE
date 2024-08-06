@@ -54,7 +54,7 @@
         <div class="col-lg-3 col-6 text-right">
             <!-- shopping cart -->
             <a href="/shopCart" class="btn border"> <i
-                class="fas fa-shopping-cart text-primary"></i> <span class="badge text-dark fs-6">sessionScope.sizeCart</span>
+                class="fas fa-shopping-cart text-primary"></i> <span class="badge text-dark fs-6"></span>
             </a>
         </div>
     </div>
@@ -85,21 +85,23 @@
                     </div>
                     
                 
-                    <div class="navbar-nav ml-auto py-0">
-                        <a href="/login-form" class="nav-item nav-link">Login</a>
-                         <a href="/register-form"
-                            class="nav-item nav-link">Register</a>
-                    </div>
-                    
-                 
-                   
-                    <div class="navbar-nav ml-auto py-0">
-                        
-                         <a href="/infoUser"
-                            class="nav-item nav-link">Thông tin tài khoản</a>
-                             <a href="/log-out"
-                            class="nav-item nav-link">Log-out</a>
-                    </div>
+						<div *ngIf="loggedIn==false" class="navbar-nav ml-auto py-0">
+							<a href="/user/login" class="nav-item nav-link">Login</a>
+							 <a href="/user/register"
+								class="nav-item nav-link">Register</a>
+								
+						</div>
+						
+				
+				
+						<div *ngIf="loggedIn==true" class="navbar-nav ml-auto py-0">
+							
+							 <a href="/infoUser"
+								class="nav-item nav-link">Thông tin tài khoản</a>
+								 <a href="/user/login" (click)="getLogout()"
+								class="nav-item nav-link">Log-out</a>
+								
+						</div>
                     
                    
                     
@@ -125,10 +127,7 @@
     
     
     
-    <div class="ms-5 my-2">
-    Tài Khoản của <br>
-    <span style="font-weight: bold;">sessionScope.userCurrent.name </span>
-    </div>
+  
     </div>
     
     

@@ -12,7 +12,7 @@ import { CheckOutComponent } from './components/check-out/check-out.component';
 
 import { LoginComponent } from './components/login/login.component';
 import { RegisterComponent } from './components/register/register.component';
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { VerifyRegisterComponent } from './components/verify-register/verify-register.component';
 
 @NgModule({
@@ -31,7 +31,8 @@ import { VerifyRegisterComponent } from './components/verify-register/verify-reg
   imports: [
     CommonModule,
     UiRoutingModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    FormsModule
   ]
 })
 export class UiModule { }

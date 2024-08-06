@@ -9,6 +9,8 @@ import { ListorderComponent } from './components/listorder/listorder.component';
 import { LocationUpdateComponent } from './components/location-update/location-update.component';
 import { LocationCreateComponent } from './components/location-create/location-create.component';
 import { DetailOrderComponent } from './components/detail-order/detail-order.component';
+import { InfoComponent } from './components/info/info.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -19,11 +21,13 @@ import { DetailOrderComponent } from './components/detail-order/detail-order.com
     LocationUpdateComponent,
     LocationCreateComponent,
     DetailOrderComponent,
+    InfoComponent
 
   ],
   imports: [
     CommonModule,
-    InfoUserRoutingModule
+    InfoUserRoutingModule,
+    ReactiveFormsModule
   ]
 })
 export class InfoUserModule { }

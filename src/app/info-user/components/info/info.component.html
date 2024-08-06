@@ -1,4 +1,8 @@
-<div class="col-12 shadow-lg  row " style="height: 500px">
+
+<div *ngIf="userResponse">
+
+<div    class="col-12 shadow-lg  row " style="height: 500px">
+    
  <!-- form info -->
    <div class="col-7  h-100 border-end">
     
@@ -6,27 +10,27 @@
     <div class="my-3  ">
     <span style="font-size: x-large;font-style: inherit;" >Thông tin cá nhân</span>
     </div>
-    <form action="/infoCostumer/update" method="post">
-    <input type="hidden" value="userCurrent.email"  name="email" class="form-control" id="exampleInputEmail1" >
+    <form  [formGroup]="form"  method="post">
+    <input type="hidden"  value="userCurrent.email"  name="email" class="form-control" id="exampleInputEmail1" >
 <div class="mb-3">
-Họ và tên :
-<input type="text" value="userCurrent.name"  name="name" class="form-control" id="exampleInputEmail1" >
+Họ và tên : 
+<input type="text"  formControlName="name"  name="name" class="form-control" id="exampleInputEmail1" >
 
 </div>
 <div class="mb-3">
 Ngày sinh :
   
-<input type="date" value="birthdayUserCurrent" required="required"	 name="birhdayYet" class="form-control" id="exampleInputEmail1" >
+<input type="date"  formControlName="birthday"   required="required"	 name="birthday" class="form-control" id="exampleInputEmail1" >
 
 </div>
 <div class="mb-3">
 Giới Tính :
 <div class="ms-3 form-check form-check-inline">
-<input class="form-check-input"  required="required"  type="radio" name="gender" id="inlineRadio1" value="true">
+<input class="form-check-input"  required="required" formControName="gender" [checked]="userResponse.gender==true"  type="radio" name="gender" id="inlineRadio1" value="true">
 <label class="form-check-label" for="inlineRadio1">Nam</label>
 </div>
 <div class="form-check form-check-inline">
-<input class="form-check-input" required="required"  type="radio" name="gender" id="inlineRadio2" value="false">
+<input class="form-check-input" required="required" formControlName="gender"  [checked]="userResponse.gender==false" type="radio" name="gender" id="inlineRadio2" value="false">
 <label class="form-check-label" for="inlineRadio2">Nu</label>
 </div>
 
@@ -35,18 +39,18 @@ Giới Tính :
  <div class="mb-3">
 
 Số điện thoại :
-<input type="text" value="userCurrent.phone"  name="phone" class="form-control" id="exampleInputEmail1" >
+<input type="text"  formControlName="phone"  name="phone" class="form-control" id="exampleInputEmail1" >
 
 </div>
 
 <div class="mb-3">
 
 Địa chỉ :
-<input type="text" value="userCurrent.location"  name="location" class="form-control" id="exampleInputEmail1" >
+<input type="text"   formControlName="location" name="location" class="form-control" id="exampleInputEmail1" >
 
 </div>
 
-<button type="submit" class="  btn btn-primary">Lưu thay đổi</button>
+<button type="submit" [disabled]="form.invalid" (click)="capNhat()" class="  btn btn-primary">Lưu thay đổi</button>
 </form>
     
     
@@ -66,9 +70,9 @@ Số điện thoại :
 
                     <!-- info -->
                     <div class="col-10 row">
-                        <i class="fa-solid fa-phone col-2"></i>
+                      
                         <div class="col-10">
-                            <span> Số điện thoại  <br> userCurrent.phone
+                            <span> Số điện thoại  <br> {{userResponse.phone}}
                             </span>
                         </div>
                     </div>
@@ -85,9 +89,9 @@ Số điện thoại :
 
                     <!-- info -->
                     <div class="col-10 row">
-                        <i class="fa-solid fa-envelope col-2"></i>
+                       
                         <div class="col-10">
-                            <span> Email  <br> userCurrent.email
+                            <span> Email  <br> {{userResponse.email}}
                             </span>
                         </div>
                     </div>
@@ -112,7 +116,7 @@ Số điện thoại :
 
                     <!-- info -->
                     <div class="col-10 row">
-                        <i class="fa-solid fa-lock col-2"></i>
+                       
                         <div class="col-10">
                             <span> Đổi mật khẩu  
                             </span>
@@ -134,4 +138,7 @@ Số điện thoại :
     
     
     
-    </div>  </div>
+    </div> 
+ </div>
+
+</div>

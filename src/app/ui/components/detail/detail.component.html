@@ -27,24 +27,25 @@
 					lorem duo dolor no sea nonumy. Accus labore stet, est lorem sit
 					diam sea et justo, amet at lorem et eirmod ipsum diam et rebum kasd
 					rebum.</p>
+					<form [formGroup]="formProductDetail">
 				<div class="d-flex mb-3 flex-nowrap">
 					<p class="text-dark font-weight-medium mb-0 mr-3 p-2">Size</p>
 							
 							
 					<span class="ms-1 border p-2 d-flex  flex-nowrap"> <input type="radio"
-						class="custom-control-input" id="sizeS"  required="required" name="size" value=""> <label
+						class="custom-control-input" id="sizeS" formControlName="size"  required="required" name="size" value="SizeS"> <label
 						class="custom-control-label fs-6" for="size-1"> Size S <br> (Còn: {{product.sizeS}} SP)</label>
 					</span> 
 					<span class="ms-1 border p-2 d-flex  flex-nowrap"> <input type="radio"
-						class="custom-control-input" id="sizeM"  required="required" name="size" value=""> <label
+						class="custom-control-input" id="sizeM"  formControlName="size" required="required" name="size" value="SizeM"> <label
 						class="custom-control-label fs-6" for="size-1"> Size M <br> (Còn: {{product.sizeM}} SP)</label>
 					</span> 
 					<span class="ms-1 border p-2 d-flex  flex-nowrap"> <input type="radio"
-						class="custom-control-input" id="sizeL"  required="required" name="size" value=""> <label
+						class="custom-control-input" id="sizeL" formControlName="size"  required="required" name="size" value="SizeL"> <label
 						class="custom-control-label fs-6" for="size-1"> Size L <br> (Còn: {{product.sizeL}} SP)</label>
 					</span> 
 					<span class="ms-1 border p-2 d-flex  flex-nowrap"> <input type="radio"
-						class="custom-control-input" id="sizeXL"  required="required" name="size" value=""> <label
+						class="custom-control-input" id="sizeXL" formControlName="size"  required="required" name="size" value="SizeXL"> <label
 						class="custom-control-label fs-6" for="size-1"> Size XL <br> (Còn: {{product.sizeXL}} SP)</label>
 					</span> 
 						
@@ -56,15 +57,19 @@
 					<div class="input-group quantity mr-3 border me-3"
 						style="width: 130px;">
 					  	
-						<input type="number" min=0  required="required" class="form-control  text-center" name="quality">
+						<input type="number" [class.is-invalid]="formProductDetail.controls['quantity'].invalid && formProductDetail.controls['quantity'].touched" formControlName="quantity" min="0"  required="required" class="form-control  text-center" name="quality">
+						
 						
 					</div>
 					<input type="hidden" name="idProduct" value="productDB.idProduct">
-					<button class="btn btn-primary px-3" type="submit">
+					<button [disabled]="formProductDetail.invalid" (click)="postCart()"  class="btn btn-primary px-3" type="button">
 						<i class="fa fa-shopping-cart mr-1"></i> Add To Cart
 					</button>
 				</div>
-
+				<span class="text-danger" *ngIf="formProductDetail.controls['quantity'].invalid && formProductDetail.controls['quantity'].touched">
+					Số lượng mua ít nhất là 1 !
+				</span>
+			</form>
 			</div>
 		</div>
 

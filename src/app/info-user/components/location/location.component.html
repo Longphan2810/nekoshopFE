@@ -14,7 +14,7 @@
         <div class=" col-12 d-flex justify-content-center " >
     
         <span>
-        <a href="/locationCostumer/add-form">+ Thêm địa chỉ mới </a>
+        <a href="/infoUser/locationCreate">+ Thêm địa chỉ mới </a>
         </span>
         
         </div>
@@ -26,26 +26,26 @@
     
    
     <!-- Địa chỉ -->
-    
-    <div class=" my-4 border shadow-sm " >
+    <div *ngIf="listAddres">
+    <div *ngFor="let address of listAddres" class=" my-4 border shadow-sm " >
     <!-- sơ lượt sản phẩm -->
     <div class="   py-3  border-bottom d-flex flex-nonwrap">
         <!-- thong tin sản phẩm -->
         <div class=" col-9 d-flex justify-content-between " >
-        
+       
         <div class="ms-3">
-    element.name
+            {{address.name}}
    
-     <span class="text-success ms-2"> <i class="fa-regular fa-circle-check"></i> Địa chỉ mặc định </span> 
+     <span *ngIf="address.status" class="text-success ms-2"> <i class="fa-regular fa-circle-check"></i> Địa chỉ mặc định </span> 
  
      <br>
-        Địa chỉ : element.address , element.city <br>
-        Số Điện thoại : element.phone
+        Địa chỉ : {{address.address}} ,  {{address.city}} <br>
+        Số Điện thoại : {{address.phone}}
         
         </div>
         
         <span>
-        <a href="/locationCostumer/update-form/${element.idDeliveryAddress}"> Chỉnh  Sửa</a>
+        <a href="/infoUser/locationUpdate?id={{address.idDeliveryAddress}}"> Chỉnh  Sửa</a>
         </span>
         
         </div>
@@ -53,8 +53,11 @@
     </div>
     
     </div>
+    </div>
+
     
     <!-- địa chỉ end -->
+     
     
  
     

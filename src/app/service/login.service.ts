@@ -13,14 +13,17 @@ export class LoginService {
   url="http://localhost:8080/api/"
 
   public static loggedin = false;
+  public static emailUser = "";
   
 
   constructor(private http : HttpClient,  private cookieService  : CookieService) { 
     let token = this.cookieService.get("jtoken");
-    if(token!=""){
+    let mail = this.cookieService.get("email");
+    if(token!=""&&mail!=""){
       LoginService.loggedin = true
+      LoginService.emailUser=mail
       console.log(LoginService.loggedin)
-    
+      console.log(token)
     } 
   }
 

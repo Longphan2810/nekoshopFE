@@ -26,5 +26,6 @@ export class UiComponent implements OnInit {
 
   ngOnInit(): void {
     this.getCategorys()
+    this.loggedIn = LoginService.loggedin
   }
 }

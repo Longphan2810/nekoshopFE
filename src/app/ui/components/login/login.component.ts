@@ -29,6 +29,7 @@ export class LoginComponent implements OnInit {
           this.loginService.setLoggedin(true);
           window.location.assign("/");
           this.cookieService.set("jtoken",authenRespone.token,1,"/")
+          this.cookieService.set("email",this.formLogin.value['email'],1,"/")
           console.log(this.loginService.getLoggedin())
         },
         error => {
@@ -63,7 +64,7 @@ export class LoginComponent implements OnInit {
 
   ngOnInit(): void {
 
-    const token = this.cookieService.get('jtoken');
+    const token = this.cookieService.get('email');
     console.log("token :" + token); 
 
     
