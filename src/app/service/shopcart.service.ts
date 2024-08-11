@@ -1,10 +1,11 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { ApiRespone } from '../entity/api-respone';
 import { ProductRequest } from '../entity/product-request';
 import { LoginService } from './login.service';
 import { CartRequest } from '../entity/cart-request';
+import { CookieService } from 'ngx-cookie-service';
 
 @Injectable({
   providedIn: 'root'
@@ -14,12 +15,16 @@ export class ShopcartService {
   url ="http://localhost:8080/api"
   
 
-  constructor(private http : HttpClient) { }
+  constructor(private http : HttpClient, private cookieService : CookieService) { }
+
+  token = this.cookieService.get("jtoken");
+
+  headers_bearer =  new HttpHeaders().set("Authorization", "Bearer " + this.token);
 
 // get shop cart
   getShopCart():Observable<ApiRespone>{
 
-    return this.http.get<ApiRespone>(this.url+"/shopingCart/"+LoginService.emailUser);
+    return this.http.get<ApiRespone>(this.url+"/shopingCart/"+LoginService.emailUser,{headers:this.headers_bearer});
 
   }
 
@@ -27,21 +32,21 @@ export class ShopcartService {
 
   getCheckStock():Observable<ApiRespone>{
 
-    return this.http.get<ApiRespone>(this.url+"/shopCartCheck/"+LoginService.emailUser);
+    return this.http.get<ApiRespone>(this.url+"/shopCartCheck/"+LoginService.emailUser,{headers:this.headers_bearer});
 
   }
 
   // post product
   postProductToCard(cartRequest : CartRequest):Observable<ApiRespone>{
 
-   return this.http.post<ApiRespone>(this.url+"/shopingCart",cartRequest);
+   return this.http.post<ApiRespone>(this.url+"/shopingCart",cartRequest,{headers:this.headers_bearer});
 
   }
 
   // put product 
   putProductToCard(cartRequest : CartRequest):Observable<ApiRespone>{
 
-    return this.http.put<ApiRespone>(this.url+"/shopingCart",cartRequest);
+    return this.http.put<ApiRespone>(this.url+"/shopingCart",cartRequest,{headers:this.headers_bearer});
  
    }
 

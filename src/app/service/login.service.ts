@@ -1,9 +1,10 @@
 import { HttpClient } from '@angular/common/http';
-import { Injectable } from '@angular/core';
+import { inject, Injectable, PLATFORM_ID } from '@angular/core';
 import { AuthenRequest } from '../entity/authen-request';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { ApiRespone } from '../entity/api-respone';
 import { CookieService } from 'ngx-cookie-service';
+import { platform } from 'os';
 
 @Injectable({
   providedIn: 'root'
@@ -26,6 +27,13 @@ export class LoginService {
       console.log(token)
     } 
   }
+
+  static reset(){
+     LoginService.loggedin = false;
+     LoginService. emailUser = "";
+     
+  }
+
 
   //check loggedin
   checkLog(){

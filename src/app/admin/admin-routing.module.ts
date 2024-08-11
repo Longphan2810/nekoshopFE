@@ -8,25 +8,44 @@ import { ManageorderComponent } from './components/manageorder/manageorder.compo
 import { ListorderComponent } from './components/listorder/listorder.component';
 import { ManageuserComponent } from './components/manageuser/manageuser.component';
 import { ListuserComponent } from './components/listuser/listuser.component';
+import { RoleGuardService } from '../service/role-guard.service';
+
 
 const routes: Routes = [
   {path : '' , component:UiadminComponent, 
   children:[
-    {path : 'manageProduct', component: ManageproductComponent},
+ 
+    {path : 'manageProduct', component: ManageproductComponent,
+      canActivate :[RoleGuardService],data:{expectedRole:"ADMIN"}
+    },
   
-    {path : 'manageProduct/:id', component: ManageproductComponent},
+    {path : 'manageProduct/:id', component: ManageproductComponent ,
+      canActivate :[RoleGuardService],data:{expectedRole:"ADMIN"}
+   },
 
-    {path : '', component: ManagecategoryComponent},
+    {path : '', component: ManagecategoryComponent ,
+      canActivate :[RoleGuardService],data:{expectedRole:"ADMIN"}
+   },
 
-    {path : 'manageOrder', component: ManageorderComponent},
+    {path : 'manageOrder', component: ManageorderComponent ,
+      canActivate :[RoleGuardService],data:{expectedRole:"ADMIN"}
+   },
 
-    {path : 'manageUsers', component: ManageuserComponent},
+    {path : 'manageUsers', component: ManageuserComponent ,
+      canActivate :[RoleGuardService],data:{expectedRole:"ADMIN"}
+   },
 
-    {path : 'listProduct', component: ListproductComponent},
+    {path : 'listProduct', component: ListproductComponent ,
+      canActivate :[RoleGuardService],data:{expectedRole:"ADMIN"}
+   },
 
-    {path : 'listOrder', component: ListorderComponent},
+    {path : 'listOrder', component: ListorderComponent ,
+      canActivate :[RoleGuardService],data:{expectedRole:"ADMIN"}
+   },
 
-    {path : 'listUsers', component: ListuserComponent},
+    {path : 'listUsers', component: ListuserComponent ,
+      canActivate :[RoleGuardService],data:{expectedRole:"ADMIN"}
+   },
   ]
   
   }

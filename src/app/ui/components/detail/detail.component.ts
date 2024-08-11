@@ -40,6 +40,9 @@ export class DetailComponent implements OnInit {
       },
       error =>{
         console.log(error)
+        if(error.status==401){
+          window.location.assign("/user/login")
+        }
       }
      )
       console.log(cartRequest)

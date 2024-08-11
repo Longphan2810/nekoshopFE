@@ -15,12 +15,12 @@
                         <div class="card-body">
                             <div class="d-flex justify-content-between  pt-1">
                                 <div>
-                                    <h6 class="font-weight-medium">order.name
-                                        (order.phone)</h6>
+                                    <h6 *ngIf="listOrderDetail[0]" class="font-weight-medium">{{listOrderDetail[0].name}}
+                                        ({{listOrderDetail[0].phone}})</h6>
                                 </div>
 
                                 <div class="w-50">
-                                    <h6 class="font-weight-medium">order.address, order.city</h6>
+                                    <h6 class="font-weight-medium">{{listOrderDetail[0].address}}, {{listOrderDetail[0].city}}</h6>
                                 </div>
                             </div>
 
@@ -44,12 +44,12 @@
 
                             <div class="">
                             <input value="order.idOrder" name="idOrder" type="hidden">
-                                <select class="form-select"  name="status"
+                                <select *ngIf="listOrderDetail[0]" class="form-select"  name="status"
                                     aria-label="Default select example">
                                     
-                                    <option  value="done">done</option>
-                                    <option  value="cancel">cancel</option>
-                                    <option  value="waiting">waiting</option>
+                                    <option [selected]="listOrderDetail[0].status=='done'"  value="done">done</option>
+                                    <option [selected]="listOrderDetail[0].status=='cancel'" value="cancel">cancel</option>
+                                    <option [selected]="listOrderDetail[0].status=='waiting'" value="waiting">waiting</option>
                                 </select>
                             </div>
                         </div>
@@ -76,28 +76,17 @@
                     <tbody class="align-middle">
                     
                
-                    <tr>
+                    <tr *ngFor="let order of listOrderDetail">
                             <td class="align-middle"><img src=""
-                                alt="" style="width: 50px;">orderDetail.productDetail.product.name</td>
+                                alt="" style="width: 50px;">{{order.nameProduct}} ({{order.size}})</td>
                             <td class="align-middle">
-                             VND
+                                {{order.price}}  VND
                             </td>
                             <td class="align-middle">
-                                <div class="input-group quantity mx-auto"
-                                    style="width: 100px;">
-                                    <div class="input-group-btn">
-                                        
-                                    </div>
-                                    <input type="text" readonly="readonly"
-                                        class="form-control  form-control-sm  text-center"
-                                        value="orderDetail.quanlity">
-                                    <div class="input-group-btn">
-                                        
-                                    </div>
-                                </div>
+                                {{order.quantity}}
                             </td>
                             <td class="align-middle">
-                          VND
+                                {{order.quantity*order.price}}  VND
                             
                             </td>
                             
@@ -126,7 +115,7 @@
                             </div>
 
                             <div class="">
-                                <h4 class="font-weight-medium"> </h4>
+                                <h4 class="font-weight-medium"> {{total}}</h4>
                             </div>
                         </div>
 

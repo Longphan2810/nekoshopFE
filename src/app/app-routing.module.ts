@@ -3,9 +3,11 @@ import { RouterModule, Routes } from '@angular/router';
 import { LoginComponent } from './ui/components/login/login.component';
 import { RegisterComponent } from './ui/components/register/register.component';
 import { VerifyRegisterComponent } from './ui/components/verify-register/verify-register.component';
+import { LoginAdminComponent } from './admin/login-admin/login-admin.component';
 
 
 const routes: Routes = [
+  { path:  'admin/login',component: LoginAdminComponent},
   { path:  'user/login',component: LoginComponent},
   { path:  'user/register',component: RegisterComponent},
   { path:  'user/verifyRegister',component: VerifyRegisterComponent},

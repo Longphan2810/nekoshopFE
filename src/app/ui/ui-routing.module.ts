@@ -7,6 +7,7 @@ import { ShopComponent } from './components/shop/shop.component';
 import { DetailComponent } from './components/detail/detail.component';
 import { ShopingCartComponent } from './components/shoping-cart/shoping-cart.component';
 import { CheckOutComponent } from './components/check-out/check-out.component';
+import { RoleGuardService } from '../service/role-guard.service';
 
 const routes: Routes = [
   {
@@ -16,8 +17,10 @@ const routes: Routes = [
       { path: 'shop', component: ShopComponent },
      
       { path: 'detail', component: DetailComponent },
-      { path: 'shopCart', component: ShopingCartComponent },
-      { path: 'checkOut', component: CheckOutComponent }
+      { path: 'shopCart', component: ShopingCartComponent , 
+        canActivate:[RoleGuardService], data:{expectedRole :"USER"} },
+      { path: 'checkOut', component: CheckOutComponent , 
+        canActivate:[RoleGuardService], data:{expectedRole :'USER'} }
     ]
   }
 ];

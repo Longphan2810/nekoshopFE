@@ -6,6 +6,8 @@ import { CartRequest } from '../../../entity/cart-request';
 import { DeliveryAddress } from '../../../entity/delivery-address';
 import { LocationCustomerService } from '../../../service/location-customer.service';
 import { ProductDetail } from '../../../entity/product-detail';
+import { OrderService } from '../../../service/order.service';
+import { error } from 'console';
 
 @Component({
   selector: 'app-check-out',
@@ -18,7 +20,7 @@ export class CheckOutComponent {
   checkCart = new Array<ProductDetail>();
   tong = 0;
 
- constructor(private shopcartService : ShopcartService,private locationService : LocationCustomerService){}
+ constructor(private orderService : OrderService,private shopcartService : ShopcartService,private locationService : LocationCustomerService){}
 
   putCart(event : Event){
     if(LoginService.emailUser!=""){
@@ -46,6 +48,18 @@ export class CheckOutComponent {
   
   
    
+  }
+
+  postOrder(){
+    this.orderService.postOrder(LoginService.emailUser).subscribe(
+      data=>{
+        console.log(data)
+        alert("Dat Hang Thanh Cong")
+      }, error  =>{
+        alert("Dat Hang Khong Thanh Cong")
+      }
+    )
+
   }
 
   deleteCart(idProductDetail : number){

@@ -15,23 +15,26 @@
 		
 		
 	
-			<form action="/orderCostumer/chi-tiet-don" method="post">
+			<form *ngIf="listOrder" action="/orderCostumer/chi-tiet-don" method="post">
 			<!-- đơn hàng -->
 			<input type="hidden" name="idOrder" value="order.idOrder">
-		<div class=" my-4 border shadow-sm " >
+
+		<div *ngFor="let order of listOrder" class=" my-4 border shadow-sm " >
 		<!-- trạng thái đơn  -->
-		<div class="p-3 border-bottom " >Trạng thái đơn hàng : order.status <span class="ms-5"> Mã đơn hàng :order.idOrder</span> </div>
+		<div class="p-3 border-bottom " >Trạng thái đơn hàng : {{order.status}} <span class="ms-5"> Mã đơn hàng :{{order.idOrder}}</span> </div>
 		<!-- sơ lượt sản phẩm -->
 		
 			
 				<div class="   py-3  border-bottom d-flex flex-nonwrap">
 			<!-- hình sản phẩm -->
-			<div class="col-2 me-5">
-			<img alt=""  style="height: 80px ; width: 150px">
+			<div style="font-weight: bolder;" class="col-8 ms-3 me-5">
+			Name : {{order.name}} <br>
+			Phone : {{order.phone}}  <br>
+			Address : {{order.address}} , {{order.city}}  
 			</div>
 			<!-- thong tin sản phẩm -->
-			<div class=" col-8 d-flex justify-content-between " style="font-weight: bolder;">
-			<span>orderDetail.productDetail.product.name</span>
+			<div class=" col-2 d-flex justify-content-between " style="font-weight: bolder;">
+			Date : {{order.orderDate}} 
 		
 			</div>
 		</div>
@@ -42,7 +45,7 @@
 		<!-- Tông tien -->
 		<div class="  d-flex justify-content-around " >
 			<span></span>
-			<span>Tổng Tiền  :  </span>
+			<span>Tổng Tiền  : {{order.amount}} VND </span>
 			
 			</div>
 		
@@ -54,10 +57,12 @@
 		<div class=" py-3 d-flex justify-content-around " >
 			<span></span>
 			
-			<button type="submit" class="btn btn-outline-primary" role="button">Xem chi tiết</button>
+			<a href="/infoUser/orderDetail?idOrder={{order.idOrder}}" class="btn btn-outline-primary" role="button">Xem chi tiết</a>
 			
 			</div>
 		</div>
+
+
 		</form>
 		
 		<!-- đơn hàng  end -->

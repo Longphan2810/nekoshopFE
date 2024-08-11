@@ -12,6 +12,8 @@ import { ManageuserComponent } from './components/manageuser/manageuser.componen
 import { ManageorderComponent } from './components/manageorder/manageorder.component';
 import { ManageproductComponent } from './components/manageproduct/manageproduct.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { LoginAdminComponent } from './login-admin/login-admin.component';
+
 
 
 @NgModule({
@@ -24,7 +26,9 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     ManagecategoryComponent,
     ManageuserComponent,
     ManageorderComponent,
-    ManageproductComponent
+    ManageproductComponent,
+    LoginAdminComponent,
+
   ],
   imports: [
     CommonModule,

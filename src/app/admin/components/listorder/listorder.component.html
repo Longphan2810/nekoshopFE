@@ -7,14 +7,14 @@
         <form action="/admin/list-orders">
             <div class="row g-3 ">
                 <div class="col-8">
-                    <input type="number" min="1" class="form-control"
+                    <input type="number"  [(ngModel)]="idFind" name="idFind" min="1" class="form-control"
                         placeholder="Tìm mã đơn hàng" name="keyword" aria-label="First name">
                 </div>
 
                 <div class="col-3 ">
-                    <button type="submit" class="btn btn-secondary ">Tìm
+                    <button type="submit" (click)="findOrder()" class="btn btn-secondary ">Tìm
                         kiếm</button>
-                    <button type="button" class="btn btn-outline-primary  ">Làm
+                    <button type="button"  (click) ="fillTable()" class="btn btn-outline-primary  ">Làm
                         Mới</button>
                 </div>
             </div>
@@ -42,19 +42,18 @@
 
 
                    
-                        <tr>
-                            <td>order.idOrder</td>
-                            <td>x</td>
-                            <td>order.name</td>
-                            <td>xx VND</td>
-                            <td>order.status</td>
+                        <tr *ngFor="let order of listOrder">
+                            <td>{{order.idOrder}}</td>
+                            <td>{{order.orderDate}}</td>
+                            <td>{{order.name}}</td>
+                            <td>{{order.amount}} VND</td>
+                            <td>{{order.status}}</td>
                             <td>
-                                <form action="/admin/orders">
-                                    <input type="hidden" value="order.idOrder"
-                                        name="idOrder">
-                                    <button type="submit" class="btn btn-outline-primary">Cập
-                                        Nhật</button>
-                                </form>
+                           
+                                 
+                                    <a href= "/admin/manageOrder?idOrder={{order.idOrder}}" class="btn btn-outline-primary">Cập
+                                        Nhật</a>
+                                
                             </td>
                         </tr>
                    
